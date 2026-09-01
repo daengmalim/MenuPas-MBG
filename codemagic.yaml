@@ -1,0 +1,15 @@
+workflows:
+  build-apk-paksa:
+    name: Build APK Bersih
+    environment:
+      flutter: stable
+    scripts:
+      - name: Hapus dan Buat Ulang Android v2
+        script: |
+          rm -rf android
+          flutter create --org com.daengmalim --project-name menupas_mbg --platforms=android .
+      - name: Build APK
+        script: |
+          flutter build apk --release
+    artifacts:
+      - build/app/outputs/flutter-apk/app-release.apk
